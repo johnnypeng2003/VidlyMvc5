@@ -1,12 +1,23 @@
 ﻿@model VidlyMVC5.Models.Customer
-    @{
-        ViewBag.Title = "CustomerDetail";
-        Layout = "~/Views/Shared/_Layout.cshtml";
+@{
+    ViewBag.Title = "CustomerDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customer Detail</h2>
+
+<li>
+    @Model.Name
+</li>
+
+<ul>
+    <li>Membership Type: @Model.MembershipType.Name</li>
+    @if (Model.Birthdate.HasValue)
+    {
+        <li>Birthday: @Model.Birthdate.Value.ToShortDateString()</li>
     }
 
-    <h2>Customer Detail</h2>
+</ul>
 
-    <li>
-        @Model.Name
-    </li>
+
 

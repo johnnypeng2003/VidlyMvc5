@@ -17,10 +17,12 @@
 }
 else
 {
-    <table>
+    <table class ="table-bordered table-striped ">
         <thead>
         <tr>
             <th class="thumbnail">Name</th>
+            <th>Membership Type</th>
+            <th>Discount Rate</th>
         </tr>
         </thead>
         <tr></tr>
@@ -30,6 +32,12 @@ else
                 <tr>
                     <td>
                         @Html.ActionLink(customer.Name, "CustomerDetail", "Customers", new { id = customer.Id }, null)
+                    </td>
+                    <td>
+                        @customer.MembershipType.Name
+                    </td>
+                    <td>
+                        @customer.MembershipType.DiscountRate%
                     </td>
                 </tr>
             }
