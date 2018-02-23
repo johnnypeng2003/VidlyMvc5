@@ -1,4 +1,4 @@
-﻿@using VidlyMVC5.Models
+﻿@*@using VidlyMVC5.Models*@
 @model IEnumerable<VidlyMVC5.Models.Customer>
 @{
     ViewBag.Title = "CustomerList";
@@ -13,7 +13,7 @@
 
 @if (!Model.Any())
 {
-    <text>No any movie !</text>
+    <text>No any customer !</text>
 }
 else
 {
@@ -30,15 +30,9 @@ else
             @foreach (var customer in Model)
             {
                 <tr>
-                    <td>
-                        @Html.ActionLink(customer.Name, "CustomerDetail", "Customers", new { id = customer.Id }, null)
-                    </td>
-                    <td>
-                        @customer.MembershipType.Name
-                    </td>
-                    <td>
-                        @customer.MembershipType.DiscountRate%
-                    </td>
+                    <td>@Html.ActionLink(customer.Name, "CustomerDetail", "Customers", new { id = customer.Id }, null)</td>
+                    <td>@customer.MembershipType.Name</td>
+                    <td>@customer.MembershipType.DiscountRate%</td>
                 </tr>
             }
         </tbody>
