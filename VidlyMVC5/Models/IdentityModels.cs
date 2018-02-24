@@ -22,6 +22,7 @@ namespace VidlyMVC5.Models
     {
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Movie> Movies { get; set; }
+        public DbSet<MembershipType> MembershipTypes { get; set; }
 
         public ApplicationDbContext()
             : base("VidlyContext", throwIfV1Schema: false)

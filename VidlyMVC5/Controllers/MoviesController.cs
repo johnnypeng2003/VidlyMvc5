@@ -16,7 +16,12 @@ namespace VidlyMVC5.Controllers
         public MoviesController()
         {
             _context = new ApplicationDbContext(); 
-        }    
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
 
         // GET: Movies
         public ActionResult MovieList()
