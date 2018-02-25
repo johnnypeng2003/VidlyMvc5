@@ -53,12 +53,12 @@ namespace VidlyMVC5.Controllers
             return RedirectToAction("CustomerList", "Customers");
         }
 
-        public ActionResult NewCustomer()
+        public ActionResult New()
         {
             var membershipTypes = _context.MembershipTypes.ToList();
             var viewModel = new CustomerFormViewModel
             {
-                Customer = new Customer(),
+                Customer = new Customer(),   //Id給預設值0
                 MembershipTypes = membershipTypes
             };
             

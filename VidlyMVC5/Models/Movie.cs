@@ -20,6 +20,7 @@ namespace VidlyMVC5.Models
         public DateTime AddDate { get; set; }
 
         [Display(Name = "Stock in Qty")]
+        [Range(1, 12)]
         public byte StockQty { get; set; }
 
         public Genre Genre { get; set; }
