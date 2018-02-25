@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Xml.Serialization;
 using VidlyMVC5.Models;
+using VidlyMVC5.ViewModels;
 
 namespace VidlyMVC5.Controllers
 {
@@ -15,7 +17,7 @@ namespace VidlyMVC5.Controllers
 
         public MoviesController()
         {
-            _context = new ApplicationDbContext(); 
+            _context = new ApplicationDbContext();
         }
 
         protected override void Dispose(bool disposing)
@@ -31,12 +33,47 @@ namespace VidlyMVC5.Controllers
             return View(movies);
         }
 
-        public ActionResult MovieDetail(int id)
+        public ActionResult MovieEdit(int id)
         {
             var movie = _context.Movies.Include(m => m.Genre).SingleOrDefault(m => m.Id == id);
 
-            return View(movie);
+            var viewModel = new MovieFormViewModel
+            {
+                Movie = movie,
+                Genres = _context.Genres.ToList()
+            };
 
+            return View("MovieForm", viewModel);
+
+        }
+
+        public ActionResult New()
+        {
+            var viewModel = new MovieFormViewModel
+            {   
+                Genres = _context.Genres.ToList()
+            };
+            
+            return View("MovieForm", viewModel);
+        }
+
+        public ActionResult Save(Movie movie)
+        {
+            if (movie.Id == 0)
+                _context.Movies.Add(movie);
+            else
+            {
+                var movieInDb = _context.Movies.Single(c => c.Id == movie.Id);
+
+                movieInDb.Name = movie.Name;
+                movieInDb.ReleaseDate = movie.ReleaseDate;
+                movieInDb.StockQty = movie.StockQty;
+                movieInDb.GenreId = movie.GenreId;
+            }
+
+            _context.SaveChanges();
+           
+            return RedirectToAction("MovieList", "Movies");
         }
     }
 }

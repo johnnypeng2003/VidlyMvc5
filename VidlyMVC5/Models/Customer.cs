@@ -11,11 +11,12 @@ namespace VidlyMVC5.Models
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "請輸入客戶名字 !")]
         [StringLength(255)]
         public string Name { get; set; }
 
         [Display(Name = "Date of Birth")]
+        [Min18YearsIfAMember]
         public DateTime? Birthdate { get; set; }
 
         public bool IsSubscribedToNewsletter{ get; set; }
