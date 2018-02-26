@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
+using VidlyMVC5.Dtos;
 
 namespace VidlyMVC5.Models
 {
@@ -13,7 +14,7 @@ namespace VidlyMVC5.Models
         {
             var customer = (Customer) validationContext.ObjectInstance;
 
-            if (customer.MembershipTypeId == MembershipType.Unknown || 
+            if (customer.MembershipTypeId == MembershipType.Unknown ||
                 customer.MembershipTypeId == MembershipType.PayAsYouGo)
                 return ValidationResult.Success;
 
