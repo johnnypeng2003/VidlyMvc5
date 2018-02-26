@@ -16,6 +16,8 @@ namespace VidlyMVC5.App_Start
             {
                 cfg.CreateMap<Customer, CustomerDto>();
                 cfg.CreateMap<CustomerDto, Customer>();
+                cfg.CreateMap<Movie, MovieDto>();
+                cfg.CreateMap<MovieDto, Movie>();
             });
         }
     }
