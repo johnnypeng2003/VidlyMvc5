@@ -73,8 +73,7 @@ namespace VidlyMVC5.Controllers
         // GET: Customers
         public ActionResult CustomerList()
         {
-            var customers = _context.Customers.Include(c => c.MembershipType).ToList();
-            return View(customers);
+            return View();
         }
 
         // Get Customer Detail
