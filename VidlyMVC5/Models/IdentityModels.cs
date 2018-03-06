@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -9,6 +10,10 @@ namespace VidlyMVC5.Models
     // 您可將更多屬性新增至 ApplicationUser 類別，藉此為使用者新增設定檔資料，如需深入了解，請瀏覽 https://go.microsoft.com/fwlink/?LinkID=317594。
     public class ApplicationUser : IdentityUser
     {
+        [Required]
+        [StringLength(255)]
+        public string DrivingLicense { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // 注意 authenticationType 必須符合 CookieAuthenticationOptions.AuthenticationType 中定義的項目
@@ -24,6 +29,7 @@ namespace VidlyMVC5.Models
         public DbSet<Movie> Movies { get; set; }
         public DbSet<MembershipType> MembershipTypes { get; set; }
         public DbSet<Genre> Genres { get; set; }
+        public DbSet<Rental> Rentals { get; set; }
 
         public ApplicationDbContext()
             : base("VidlyContext", throwIfV1Schema: false)

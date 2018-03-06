@@ -27,5 +27,7 @@ namespace VidlyMVC5.Models
 
         [Display(Name = "Genre")]
         public byte GenreId { get; set; }
+
+        public byte AvailableQty { get; set; }
     }
 }

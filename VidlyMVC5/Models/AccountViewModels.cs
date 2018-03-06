@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using VidlyMVC5.Migrations;
 
 namespace VidlyMVC5.Models
 {
@@ -8,6 +9,10 @@ namespace VidlyMVC5.Models
         [Required]
         [Display(Name = "電子郵件")]
         public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "Drving License")]
+        public string DrivingLicense { get; set; }
     }
 
     public class ExternalLoginListViewModel
@@ -64,6 +69,10 @@ namespace VidlyMVC5.Models
 
     public class RegisterViewModel
     {
+        [Required]
+        [Display(Name = "Driving License")]
+        public string DrivingLicense { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "電子郵件")]
